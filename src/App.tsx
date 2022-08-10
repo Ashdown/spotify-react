@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom';
 import { createUseStyles} from 'react-jss';
 import { QueryClientProvider } from 'react-query';
 import { fontStyles, resetStyles} from "./styles";
@@ -17,9 +18,11 @@ function App() {
   useStyles();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Page/>
-    </QueryClientProvider>
+    <Router>
+      <QueryClientProvider client={queryClient}>
+        <Page/>
+      </QueryClientProvider>
+    </Router>
   );
 }
 

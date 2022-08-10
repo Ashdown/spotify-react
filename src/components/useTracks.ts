@@ -5,16 +5,14 @@ export type Artist = {
   name: string;
 }
 
-type Track = {
+export type Track = {
   id: string;
   name: string;
   image: string;
   artist: Artist;
 }
 
-type Tracks = Track[]
-
-const useTracks = ():Tracks => {
+const useTracks = ():Track[] => {
   const spotifyTracks = useSpotifyTracks()
 
   if(spotifyTracks.isError || spotifyTracks.isLoading) {
