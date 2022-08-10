@@ -1,5 +1,5 @@
 import React from "react";
-import { Track, Artist } from "./useTracks";
+import { Track, Artist } from "./useTracks/useTracks";
 import { useSearchParams } from 'react-router-dom'
 import ArtistRadioButton from "./ArtistRadioButton";
 import SubHeading from "./SubHeading";

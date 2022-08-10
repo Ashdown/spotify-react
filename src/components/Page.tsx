@@ -1,5 +1,5 @@
 import React from "react";
-import useTracks from "./useTracks";
+import useTracks from "./useTracks/useTracks";
 import PageHeading from "./PageHeading";
 import TrackList from './TrackList';
 import Artists from "./Artists";

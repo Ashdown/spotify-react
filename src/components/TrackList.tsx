@@ -1,7 +1,7 @@
 import React from "react";
 import {createUseStyles} from "react-jss";
 import {useSearchParams} from "react-router-dom";
-import {Track} from "./useTracks";
+import {Track} from "./useTracks/useTracks";
 import classNames from "classnames";
 import SubHeading from "./SubHeading";
 import { GUTTER_WIDTH } from "../constants";
