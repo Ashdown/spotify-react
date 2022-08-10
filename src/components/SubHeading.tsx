@@ -3,6 +3,7 @@ import {createUseStyles} from "react-jss";
 
 type Props = {
   children: string;
+  dataTestId: string;
 }
 
 const useStyles = createUseStyles(() => ({
@@ -16,11 +17,11 @@ const useStyles = createUseStyles(() => ({
   }
 }));
 
-const SubHeading = ({children}:Props) => {
+const SubHeading = ({children, dataTestId}:Props) => {
 
   const classes = useStyles()
 
-  return (<h2 className={classes.root}>{children}</h2>)
+  return (<h2 data-testid={dataTestId} className={classes.root}>{children}</h2>)
 }
 
 export default SubHeading

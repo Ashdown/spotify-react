@@ -51,7 +51,7 @@ const TrackList = ({tracks}:Props) => {
 
   return (
     <>
-    <SubHeading>Tracks</SubHeading>
+    <SubHeading dataTestId="tracks-heading">Tracks</SubHeading>
     <ul className={classes.list}>
       {
         filteredTracks.map( track => <li key={track.id} className={classes.item}>

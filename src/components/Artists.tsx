@@ -38,7 +38,7 @@ const Artists = ({tracks, className}:Props) => {
 
   return (
     <div className={className}>
-      <SubHeading>Artists</SubHeading>
+      <SubHeading dataTestId="artists-heading" >Artists</SubHeading>
       <form className={classes.form}>
         <ArtistRadioButton value='none' onChange={clearSelectedArtist} checked={!selectedArtist}>
           None
