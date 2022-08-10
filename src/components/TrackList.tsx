@@ -47,8 +47,6 @@ const TrackList = ({tracks}:Props) => {
 
   const artist = searchParams.get('artist')
 
-  // TODO: refactor into hook
-
   const filteredTracks = artist ? tracks.filter( track => track.artist.id === searchParams.get('artist')) : tracks
 
   return (

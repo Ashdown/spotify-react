@@ -15,7 +15,7 @@ export type Track = {
 }
 
 // @ts-ignore
-export const sortTrackByDate = (trackA:Track, trackB:Track) => trackA.date - trackB.date
+const sortTrackByDate = (trackA:Track, trackB:Track) => trackA.date - trackB.date
 
 const useTracks = ():Track[] => {
   const spotifyTracks = useSpotifyTracks()
