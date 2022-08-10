@@ -9,6 +9,7 @@ export type Track = {
   id: string;
   name: string;
   image: string;
+  date: Date;
   artist: Artist;
 }
 
@@ -22,9 +23,10 @@ const useTracks = ():Track[] => {
     id: item.track.id,
     name: item.track.name,
     image: item.track.album.images.find( (image:any) => image.height === 64).url,
+    date: new Date(item.added_at),
     artist: {
       id: item.track.artists[0].id,
-      name: item.track.artists[0].name
+      name: item.track.artists[0].name,
     }
   }))
 
