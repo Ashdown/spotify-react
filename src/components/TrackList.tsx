@@ -47,7 +47,6 @@ const TrackList = ({tracks}:Props) => {
 
   const filteredTracks = artist ? tracks.filter( track => track.artist.id === searchParams.get('artist')) : tracks
 
-
   return (
     <>
     <h2 className={classes.heading}>Tracks</h2>

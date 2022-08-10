@@ -4,10 +4,11 @@ import { useSearchParams } from 'react-router-dom'
 import ArtistRadioButton from "./ArtistRadioButton";
 
 type Props = {
-  tracks: Track[]
+  tracks: Track[];
+  className: string;
 }
 
-const Artists = ({tracks}:Props) => {
+const Artists = ({tracks, className}:Props) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -26,19 +27,19 @@ const Artists = ({tracks}:Props) => {
   const selectedArtist = searchParams.get('artist')
 
   return (
-    <>
-    <h2>Artists</h2>
-    <form>
-      <ArtistRadioButton value='none' onChange={clearSelectedArtist} checked={!selectedArtist}>
-        None
-      </ArtistRadioButton>
-      { artists.map( artist =>
-        <ArtistRadioButton key={artist.id} value={artist.id} onChange={onArtistChange} checked={artist.id === selectedArtist}>
-          {artist.name}
+    <div className={className}>
+      <h2>Artists</h2>
+      <form>
+        <ArtistRadioButton value='none' onChange={clearSelectedArtist} checked={!selectedArtist}>
+          None
         </ArtistRadioButton>
-      )}
-    </form>
-    </>
+        { artists.map( artist =>
+          <ArtistRadioButton key={artist.id} value={artist.id} onChange={onArtistChange} checked={artist.id === selectedArtist}>
+            {artist.name}
+          </ArtistRadioButton>
+        )}
+      </form>
+    </div>
   )
 }
 
