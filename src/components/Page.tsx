@@ -1,5 +1,5 @@
 import React from "react";
-import useTracks from "../services/useTracks";
+import useTracks from "./useTracks";
 
 const Page = () => {
 
@@ -9,7 +9,16 @@ const Page = () => {
 
   return (<div>
     <h1 data-testid="page-heading">Spotify App</h1>
-    <p>Insert the app here</p>
+    <h2>Tracks</h2>
+    <ul>
+    {
+      tracks.map( track => <li key={track.id}>
+        {track.name}
+        <img height="64" width="64" src={track.image}/>
+      </li>)
+    }
+    </ul>
+    <h2>Authors</h2>
   </div>)
 }
 

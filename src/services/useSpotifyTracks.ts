@@ -7,15 +7,19 @@ const config = {
   headers: { Authorization: `Bearer ${BEARER_TOKEN}` }
 };
 
-const useTracks = () => {
+// const options = { refetchInterval: 5000 };
+
+const useSpotifyTracks = () => {
   return useQuery(["tracks"], async () => {
     const { data } = await axios.get(
       // get all users liked tracks
       "https://api.spotify.com/v1/me/tracks",
       config
-    );
+    )
     return data;
-  });
+  },
+  // options
+  );
 }
 
-export default useTracks
+export default useSpotifyTracks
