@@ -7,7 +7,7 @@ const config = {
   headers: { Authorization: `Bearer ${BEARER_TOKEN}` }
 };
 
-// const options = { refetchInterval: 5000 };
+const options = { refetchInterval: 30000 };
 
 const useSpotifyTracks = () => {
   return useQuery(["tracks"], async () => {
@@ -18,7 +18,7 @@ const useSpotifyTracks = () => {
     )
     return data;
   },
-  // options
+  options
   );
 }
 

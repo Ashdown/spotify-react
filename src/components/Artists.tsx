@@ -16,7 +16,6 @@ const useStyles = createUseStyles(() => ({
   }
 }))
 
-
 const Artists = ({tracks, className}:Props) => {
 
   const [searchParams, setSearchParams] = useSearchParams();

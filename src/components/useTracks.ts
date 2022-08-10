@@ -13,12 +13,16 @@ export type Track = {
   artist: Artist;
 }
 
+// @ts-ignore
+const sortTrackByDate = (trackA:Track, trackB:Track) => trackA.date - trackB.date
+
 const useTracks = ():Track[] => {
   const spotifyTracks = useSpotifyTracks()
 
   if(spotifyTracks.isError || spotifyTracks.isLoading) {
     return []
   }
+
   return spotifyTracks.data.items.map( (item:any) => ({
     id: item.track.id,
     name: item.track.name,
@@ -28,7 +32,7 @@ const useTracks = ():Track[] => {
       id: item.track.artists[0].id,
       name: item.track.artists[0].name,
     }
-  }))
+  })).sort(sortTrackByDate)
 
 }
 
