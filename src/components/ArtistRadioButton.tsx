@@ -1,4 +1,6 @@
 import React from "react";
+import {createUseStyles} from "react-jss";
+import classNames from "classnames";
 
 type Props = {
   value: string;
@@ -7,11 +9,36 @@ type Props = {
   checked: boolean;
 }
 
+const useStyles = createUseStyles(() => ({
+  root: {
+    display: 'block',
+    padding: 8,
+    border: '1px solid #e8ecf0',
+    background: '#fff',
+  },
+  isSelected: {
+    background: '#e8ecf0',
+  },
+  radio: {
+    opacity: 0,
+    position: 'fixed',
+    left: -1000,
+    right: -1000
+  }
+}))
 
-const ArtistRadioButton = ({value, children, onChange, checked}:Props) =>
-  <label>
-    <input type="radio" name="artists" value={value} onChange={onChange} checked={checked}/>
+
+const ArtistRadioButton = ({value, children, onChange, checked}:Props) => {
+
+  const classes = useStyles()
+
+  return (<label className={classNames(classes.root, { [classes.isSelected]: checked})}>
+    <input className={classes.radio} type="radio" name="artists" value={value} onChange={onChange} checked={checked}/>
     {children}
-  </label>
+  </label>)
+}
+
+
+
 
 export default ArtistRadioButton

@@ -3,36 +3,38 @@ import {createUseStyles} from "react-jss";
 import {useSearchParams} from "react-router-dom";
 import {Track} from "./useTracks";
 import classNames from "classnames";
+import SubHeading from "./SubHeading";
 
 type Props = {
   tracks: Track[]
 }
 
 const useStyles = createUseStyles(() => ({
-  heading: {
-    fontFamily: 'Roboto',
-    fontSize: 16,
-    lineHeight: '1em',
-    textAlign: 'center',
-    marginTop: 8,
-    color: '#000'
-  },
   list: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
+    marginTop: 16,
+    marginRight: 4,
+    justifyContent: 'space-between'
   },
   item: {
-    flexBasis: '25%'
+    flexBasis: '20%',
+    padding: 4
   },
   trackInformation: {
     fontFamily: 'Roboto',
-    fontSize: 12,
+    fontSize: 14,
     lineHeight: '1em',
-    marginTop: 2,
+    marginTop: 8,
     color: '#000'
   },
   trackTitle: {
     fontWeight: 500
+  },
+  image: {
+    marginTop: 8,
+    width: '100%',
+    height: 'auto'
   }
 
 }));
@@ -49,7 +51,7 @@ const TrackList = ({tracks}:Props) => {
 
   return (
     <>
-    <h2 className={classes.heading}>Tracks</h2>
+    <SubHeading>Tracks</SubHeading>
     <ul className={classes.list}>
       {
         filteredTracks.map( track => <li key={track.id} className={classes.item}>
@@ -64,7 +66,7 @@ const TrackList = ({tracks}:Props) => {
             Liked on {track.date.toLocaleString()}
           </li>
           </ul>
-          <img height="64" width="64" src={track.image}/>
+          <img className={classes.image} height="64" width="64" src={track.image}/>
         </li>)
       }
     </ul>

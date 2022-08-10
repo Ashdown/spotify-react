@@ -6,22 +6,23 @@ import Artists from "./Artists";
 import {createUseStyles} from "react-jss";
 
 const SIDEBAR_WIDTH = 400
+const GUTTER_WIDTH = 16
 
 const useStyles = createUseStyles(() => ({
   content: {
     position: 'relative',
-    paddingRight: SIDEBAR_WIDTH
+    paddingRight: SIDEBAR_WIDTH + GUTTER_WIDTH,
+    paddingBottom: GUTTER_WIDTH,
+    paddingLeft: GUTTER_WIDTH,
   },
   sidebar: {
     width: SIDEBAR_WIDTH,
     position: 'absolute',
     top: 0,
-    right: 0,
+    right: GUTTER_WIDTH,
     bottom: 0
   }
-
 }))
-
 
 const Page = () => {
 

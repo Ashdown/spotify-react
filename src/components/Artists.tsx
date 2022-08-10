@@ -2,15 +2,26 @@ import React from "react";
 import { Track, Artist } from "./useTracks";
 import { useSearchParams } from 'react-router-dom'
 import ArtistRadioButton from "./ArtistRadioButton";
+import SubHeading from "./SubHeading";
+import {createUseStyles} from "react-jss";
 
 type Props = {
   tracks: Track[];
   className: string;
 }
 
+const useStyles = createUseStyles(() => ({
+  form: {
+    marginTop: 16
+  }
+}))
+
+
 const Artists = ({tracks, className}:Props) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const classes = useStyles()
 
   const artists:Artist[] = []
 
@@ -28,8 +39,8 @@ const Artists = ({tracks, className}:Props) => {
 
   return (
     <div className={className}>
-      <h2>Artists</h2>
-      <form>
+      <SubHeading>Artists</SubHeading>
+      <form className={classes.form}>
         <ArtistRadioButton value='none' onChange={clearSelectedArtist} checked={!selectedArtist}>
           None
         </ArtistRadioButton>
