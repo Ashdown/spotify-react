@@ -29,5 +29,5 @@ Because this uses as bearer token that looks like it expires every hour, there a
 
 ### Trade offs
 
-I would have preferred to refactor more of the code into hooks, and I would have built a responsive solution if I had the time.
+I would have preferred to refactor more of the code into hooks with better unit test coverage, and I would have built a responsive solution if I had the time.
 Also, the original solution asked for 'recent tracks' the user has played, but I don't see a way to get that using spotifys api.  Using likes instead seems like a good idea, because that allowed me to demonstrate all the other functionality. If I had the time, it would be better to request the user to enter their bearer token into a text input, as there is less risk of them checking it into the code base in that case.
