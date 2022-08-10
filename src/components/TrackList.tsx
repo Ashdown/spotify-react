@@ -16,7 +16,6 @@ const useStyles = createUseStyles(() => ({
     flexWrap: 'wrap',
     marginTop: GUTTER_WIDTH * 2,
     marginRight: GUTTER_WIDTH / 2,
-    justifyContent: 'space-between'
   },
   item: {
     flexBasis: '20%',
