@@ -4,6 +4,7 @@ import {useSearchParams} from "react-router-dom";
 import {Track} from "./useTracks";
 import classNames from "classnames";
 import SubHeading from "./SubHeading";
+import { GUTTER_WIDTH } from "../constants";
 
 type Props = {
   tracks: Track[]
@@ -13,26 +14,26 @@ const useStyles = createUseStyles(() => ({
   list: {
     display: 'flex',
     flexWrap: 'wrap',
-    marginTop: 16,
-    marginRight: 4,
+    marginTop: GUTTER_WIDTH * 2,
+    marginRight: GUTTER_WIDTH / 2,
     justifyContent: 'space-between'
   },
   item: {
     flexBasis: '20%',
-    padding: 4
+    padding: GUTTER_WIDTH / 2
   },
   trackInformation: {
     fontFamily: 'Roboto',
     fontSize: 14,
     lineHeight: '1em',
-    marginTop: 8,
+    marginTop: GUTTER_WIDTH,
     color: '#000'
   },
   trackTitle: {
     fontWeight: 500
   },
   image: {
-    marginTop: 8,
+    marginTop: GUTTER_WIDTH,
     width: '100%',
     height: 'auto'
   }
@@ -46,6 +47,8 @@ const TrackList = ({tracks}:Props) => {
   const [searchParams] = useSearchParams();
 
   const artist = searchParams.get('artist')
+
+  // TODO: refactor into hook
 
   const filteredTracks = artist ? tracks.filter( track => track.artist.id === searchParams.get('artist')) : tracks
 

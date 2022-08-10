@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import ArtistRadioButton from "./ArtistRadioButton";
 import SubHeading from "./SubHeading";
 import {createUseStyles} from "react-jss";
+import {GUTTER_WIDTH} from "../constants";
 
 type Props = {
   tracks: Track[];
@@ -12,7 +13,7 @@ type Props = {
 
 const useStyles = createUseStyles(() => ({
   form: {
-    marginTop: 16
+    marginTop: GUTTER_WIDTH * 2
   }
 }))
 

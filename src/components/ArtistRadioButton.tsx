@@ -1,6 +1,7 @@
 import React from "react";
 import {createUseStyles} from "react-jss";
 import classNames from "classnames";
+import {GUTTER_WIDTH} from "../constants";
 
 type Props = {
   value: string;
@@ -12,7 +13,7 @@ type Props = {
 const useStyles = createUseStyles(() => ({
   root: {
     display: 'block',
-    padding: 8,
+    padding: GUTTER_WIDTH,
     border: '1px solid #e8ecf0',
     background: '#fff',
   },

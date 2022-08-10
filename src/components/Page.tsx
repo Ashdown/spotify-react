@@ -4,22 +4,20 @@ import PageHeading from "./PageHeading";
 import TrackList from './TrackList';
 import Artists from "./Artists";
 import {createUseStyles} from "react-jss";
-
-const SIDEBAR_WIDTH = 400
-const GUTTER_WIDTH = 16
+import { GUTTER_WIDTH, SIDEBAR_WIDTH} from "../constants";
 
 const useStyles = createUseStyles(() => ({
   content: {
     position: 'relative',
-    paddingRight: SIDEBAR_WIDTH + GUTTER_WIDTH,
-    paddingBottom: GUTTER_WIDTH,
-    paddingLeft: GUTTER_WIDTH,
+    paddingRight: SIDEBAR_WIDTH + (GUTTER_WIDTH * 2),
+    paddingBottom: GUTTER_WIDTH * 2,
+    paddingLeft: GUTTER_WIDTH * 2,
   },
   sidebar: {
     width: SIDEBAR_WIDTH,
     position: 'absolute',
     top: 0,
-    right: GUTTER_WIDTH,
+    right: GUTTER_WIDTH * 2,
     bottom: 0
   }
 }))

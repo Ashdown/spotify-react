@@ -1,5 +1,6 @@
 import React from "react";
 import {createUseStyles} from "react-jss";
+import {GUTTER_WIDTH} from "../constants";
 
 type Props = {
   children: string;
@@ -11,7 +12,7 @@ const useStyles = createUseStyles(() => ({
     fontSize: 24,
     lineHeight: '1em',
     textAlign: 'center',
-    marginTop: 32,
+    marginTop: GUTTER_WIDTH * 4,
     color: '#000'
   }
 }));
