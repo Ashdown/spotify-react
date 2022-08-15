@@ -1,7 +1,7 @@
 import React from "react";
 import {createUseStyles} from "react-jss";
 import classNames from "classnames";
-import {GUTTER_WIDTH} from "../constants";
+import {GUTTER_WIDTH} from "../../constants";
 
 type Props = {
   value: string;

@@ -1,10 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router} from 'react-router-dom';
-import { createUseStyles} from 'react-jss';
-import { QueryClientProvider } from 'react-query';
-import { fontStyles, resetStyles} from "./styles";
+import {createUseStyles} from 'react-jss';
+import {QueryClientProvider} from 'react-query';
+import {fontStyles, resetStyles} from "./styles";
+import AuthProvider from "./AuthProvider";
 import queryClient from './queryClient';
-import Page from "./components/Page";
+import AppRoutes from "./AppRoutes";
 
 const useStyles = createUseStyles(() => ({
   '@global': {
@@ -20,7 +21,9 @@ function App() {
   return (
     <Router>
       <QueryClientProvider client={queryClient}>
-        <Page/>
+        <AuthProvider>
+          <AppRoutes/>
+        </AuthProvider>
       </QueryClientProvider>
     </Router>
   );

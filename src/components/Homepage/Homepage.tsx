@@ -4,7 +4,7 @@ import PageHeading from "./PageHeading";
 import TrackList from './TrackList';
 import Artists from "./Artists";
 import {createUseStyles} from "react-jss";
-import { GUTTER_WIDTH, SIDEBAR_WIDTH} from "../constants";
+import { GUTTER_WIDTH, SIDEBAR_WIDTH} from "../../constants";
 
 const useStyles = createUseStyles(() => ({
   content: {
@@ -22,7 +22,7 @@ const useStyles = createUseStyles(() => ({
   }
 }))
 
-const Page = () => {
+const Homepage = () => {
 
   const tracks = useTracks()
   const classes = useStyles()
@@ -38,4 +38,4 @@ const Page = () => {
   )
 }
 
-export default Page
+export default Homepage

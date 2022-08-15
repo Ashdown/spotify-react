@@ -1,28 +1,27 @@
 import React from "react";
 import {createUseStyles} from "react-jss";
-import {GUTTER_WIDTH} from "../constants";
+import {GUTTER_WIDTH} from "../../constants";
 
 type Props = {
   children: string;
-  dataTestId: string;
 }
 
 const useStyles = createUseStyles(() => ({
   root: {
     fontFamily: 'Roboto',
-    fontSize: 16,
+    fontSize: 24,
     lineHeight: '1em',
     textAlign: 'center',
-    marginTop: GUTTER_WIDTH,
+    marginTop: GUTTER_WIDTH * 4,
     color: '#000'
   }
 }));
 
-const SubHeading = ({children, dataTestId}:Props) => {
+const PageHeading = ({children}:Props) => {
 
   const classes = useStyles()
 
-  return (<h2 data-testid={dataTestId} className={classes.root}>{children}</h2>)
+  return(<h1 data-testid="page-heading" className={classes.root}>{children}</h1>)
 }
 
-export default SubHeading
+export default PageHeading

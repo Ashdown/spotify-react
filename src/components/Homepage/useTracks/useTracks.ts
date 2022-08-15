@@ -1,4 +1,4 @@
-import useSpotifyTracks from "../../services/useSpotifyTracks";
+import useSpotifyTracks from "../../../services/useSpotifyTracks";
 import getCleanTrackData from "./getCleanTrackData";
 
 export type Artist = {
