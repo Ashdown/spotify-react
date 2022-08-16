@@ -23,7 +23,8 @@ const useTracks = ():Track[] => {
   if(spotifyTracks.isError || spotifyTracks.isLoading) {
     return []
   }
-  return getCleanTrackData(spotifyTracks.data.items).sort(sortTrackByDate)
+  const items = spotifyTracks?.data?.items || []
+  return getCleanTrackData(items).sort(sortTrackByDate)
 }
 
 export default useTracks

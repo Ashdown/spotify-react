@@ -1,6 +1,7 @@
-import {useSearchParams} from "react-router-dom";
-import { CODE_KEY} from "../../constants";
+import {useSearchParams, Navigate } from "react-router-dom";
+import {ACCESS_TOKEN_KEY, CODE_KEY, EXPIRES_IN_KEY} from "../../constants";
 import useSpotifyToken from "../../services/useSpotifyToken";
+import {saveToStore} from "../../utils/localStore";
 
 const Authorization = () => {
 
@@ -8,13 +9,18 @@ const Authorization = () => {
 
   const code = searchParams.get(CODE_KEY)
 
-  console.log('code', code)
+  const spotifyTokenResponse = useSpotifyToken(code)
 
-  const spotifyToken = useSpotifyToken(code)
+  const { isLoading, isError, data } = spotifyTokenResponse
 
+  if(!isLoading && !isError) {
+    saveToStore(ACCESS_TOKEN_KEY, data.access_token)
+    saveToStore(EXPIRES_IN_KEY, new Date(new Date().getTime() + data.expires_in))
+    return <Navigate to="/"/>
+  }
 
   return (
-    <p>Authorisation</p>
+    <p>Authorising User</p>
   )
 }
 

@@ -1,7 +1,7 @@
 import React, { createContext, useEffect } from "react";
 import {useSearchParams } from "react-router-dom";
 import {loadFromStore} from "./utils/localStore";
-import { ACCESS_TOKEN_KEY, CODE_KEY, REDIRECT_URL, CLIENT_ID } from "./constants";
+import {ACCESS_TOKEN_KEY, CODE_KEY, REDIRECT_URL, CLIENT_ID, EXPIRES_IN_KEY} from "./constants";
 
 type Props = {
   children: React.ReactNode
@@ -26,29 +26,17 @@ const AuthProvider = ({children}:Props) => {
 
   const [searchParams] = useSearchParams();
 
-  const accessToken = getAccessTokenFromStorage()
+  const accessToken = loadFromStore(ACCESS_TOKEN_KEY) || null
+  const expiresIn = loadFromStore(EXPIRES_IN_KEY) || null
 
   const code = searchParams.get(CODE_KEY)
-  // searchParams.delete(CODE_KEY)
-  // setSearchParams(searchParams)
-
-  // const accessToken = hashedParams.get(ACCESS_TOKEN_KEY)
-  // const expiresIn = hashedParams.get(EXPIRES_IN_KEY)
 
   useEffect(() => {
-    if(!accessToken && !code) {
-      window.location.replace(`https://accounts.spotify.com/authorize?response_type=code&redirect_uri=${REDIRECT_URL}&scope=user-read-private user-read-email&client_id=${CLIENT_ID}`)
+    const tokenIsInvalid = !accessToken || new Date(expiresIn) <= new Date()
+    if(tokenIsInvalid && !code) {
+      window.location.replace(`https://accounts.spotify.com/authorize?response_type=code&redirect_uri=${REDIRECT_URL}&scope=playlist-read-private user-library-read user-read-private user-read-email&client_id=${CLIENT_ID}`)
     }
-  }, [accessToken, code])
-
-  // console.log('code', code)
-
-  // const spotifyToken = useSpotifyToken(REDIRECT_URL, CLIENT_ID, CLIENT_SECRET, code)
-
-  // console.log('spotifyToken', spotifyToken)
-
-  // const accessToken = null
-  const expiresIn = null
+  }, [accessToken, expiresIn, code])
 
   return (<AuthContext.Provider
     value={{
